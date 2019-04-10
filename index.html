@@ -86,52 +86,118 @@
     } else if (op == "mul"){
       calculate = a * b;
     }
-    document.querySelector("#results").innerHTML = calculate;
+    document.querySelector("#results").innerText = calculate;
   }
 
     // calculator app style script
-  var oneBtn = document.querySelector("#calc-one");
-  var twoBtn = document.querySelector("#calc-two");
-  var threeBtn = document.querySelector("#calc-three");
-  var fourBtn = document.querySelector("#calc-four");
-  var fiveBtn = document.querySelector("#calc-five");
-  var sixBtn = document.querySelector("#calc-six");
-  var sevenBtn = document.querySelector("#calc-seven");
-  var eightBtn = document.querySelector("#calc-eight");
-  var nineBtn = document.querySelector("#calc-nine");
-  var zeroBtn = document.querySelector("#calc-zero");
+  var oneBtn = document.getElementById("calc-one");
+  var twoBtn = document.getElementById("calc-two");
+  var threeBtn = document.getElementById("calc-three");
+  var fourBtn = document.getElementById("calc-four");
+  var fiveBtn = document.getElementById("calc-five");
+  var sixBtn = document.getElementById("calc-six");
+  var sevenBtn = document.getElementById("calc-seven");
+  var eightBtn = document.getElementById("calc-eight");
+  var nineBtn = document.getElementById("calc-nine");
+  var zeroBtn = document.getElementById("calc-zero");
 
-  var decimalBtn = document.querySelector("#calc-decimal");
-  var clearBtn = document.querySelector("#calc-clear");
-  var backspaceBtn = document.querySelector("#calc-backspace");
-  var displayValElement = document.querySelector("#calc-display-val");
+  var decimalBtn = document.getElementById("calc-decimal");
+  var clearBtn = document.getElementById("calc-clear");
+  var backspaceBtn = document.getElementById("calc-backspace");
+  var displayValElement = document.getElementById("calc-display-val");
 
   var displayVal = '0';
   var pendingVal;
   var evalStringArray = [];
 
-  var calcNumBtns = document.querySelectorAll(".calc-btn-num");
-  var calcOperatorBtns = document.querySelectorAll(".calc-btn-operator");
+  var calcNumBtns = document.getElementsByClassName("calc-btn-num");
+  var calcOperatorBtns = document.getElementsByClassName("calc-btn-operator");
 
   var updateDisplayVal = (clickObj) => {
     var btnText = clickObj.target.innerText;
-
-    if (displayVal === "0") {
+    console.log(btnText);
+    if (displayVal === "0")
       displayVal = "";
 
       displayVal += btnText;
       displayValElement.innerText = displayVal;
-    }
+
     console.log("updateDisplayVal Function Test");
     console.log(displayVal);
+  }
+
+  var performOperation = (clickObj) => {
+    var operator = clickObj.target.innerText;
+
+    switch (operator) {
+      case '+':
+        pendingVal = displayVal;
+        displayVal = "0";
+        displayValElement.innerText = displayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push("+");
+        break;
+      case '-':
+        pendingVal = displayVal;
+        displayVal = "0";
+        displayValElement.innerText = displayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push("-");
+        break;
+      case 'x':
+        pendingVal = displayVal;
+        displayVal = "0";
+        displayValElement.innerText = displayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push("*");
+        break;
+      case '÷':
+        pendingVal = displayVal;
+        displayVal = "0";
+        displayValElement.innerText = displayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push("/");
+        break;
+      case '=':
+        evalStringArray.push(displayVal);
+        var evaluation = eval(evalStringArray.join(" "));
+        displayVal = evaluation + "";
+        displayValElement.innerText = displayVal;
+        evalStringArray = [];
+        break;
+      default:
+        break;
+    }
   }
 
   for (let i = 0; i < calcNumBtns.length; i++) {
     calcNumBtns[i].addEventListener('click', updateDisplayVal, false);
   }
-  // for (let i = 0; i < calcOperatorBtns.length; i++) {
-  //   calcOperatorBtns[i].addEventListener('click', performOperation, false);
-  // }
+  for (let i = 0; i < calcOperatorBtns.length; i++) {
+    calcOperatorBtns[i].addEventListener('click', performOperation, false);
+  }
 
+  clearBtn.onclick = () => {
+    displayVal = "0";
+    pendingVal = undefined;
+    evalStringArray = [];
+    displayValElement.innerHTML = displayVal;
+    console.log("all clear btn works");
+  }
+  backspaceBtn.onclick = () => {
+    let lengthOfDisplayVal = displayVal.length;
+    displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
+
+    if (displayVal === "")
+      displayVal = "0";
+
+    displayValElement.innerText = displayVal;
+    console.log("backspace btn works");
+  }
+  decimalBtn.onclick = () => {
+    if(!displayVal.includes('.'))
+      displayVal += ".";
+    displayValElement.innerText = displayVal;
+  }
 </script>
 </html>
