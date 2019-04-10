@@ -1,35 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-    html,body{
-      background-color: #1c1c1c;
-      color: #e6e7e8;
-    }
-  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="aesthetics.css">
+  <link rel="shortcut icon" href="calculator-icon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <title>Calculator by The Empathic Dev</title>
 </head>
 <body>
-  
+  <div class="calculator"><h1>Basic Calculator</h1></div>
   <form>
-    value 1: <input type="text" id="value1">
-    value 2: <input type="text" id="value2">
-    operator: <select id="operator">
-      <option value="add">add</option>
-      <option value="min">minus</option>
-      <option value="div">divide</option>
-      <option value="mul">multiply</option>
-    </select>
-    <button type="button" onclick="calc()">calculate</button>
+    <div class="input1">
+        <label for="value1">Value 1</label>
+        <input type="text" id="value1">
+    </div>
+    <div class="input2">
+        <label for="value2">Value 2</label>
+        <input type="text" id="value2">
+    </div>
+    <div class="operator">
+        <label for="operator">Operator</label>
+        <select id="operator">
+          <option value="add">add</option>
+          <option value="min">minus</option>
+          <option value="div">divide</option>
+          <option value="mul">multiply</option>
+        </select>
+    </div>
+    <button type="button" onclick="calc()">Calculate</button>
   </form>
-
   <div id="results"></div>
 
+  <div class="calculator"><h1>HTML Calculator</h1></div>
+
+  <div id="calc-parent">
+    <div class="row">
+      <div class="column" id="calc-display-val">0</div>
+    </div>
+    <div class="row">
+      <div class="calc-btn column" id="calc-clear">AC</div>
+      <div class="calc-btn column" id="calc-backspace">&#8676;</div>
+      <div class="calc-btn calc-btn-operator column" id="calc-divide">&#247;</div>
+    </div>
+    <div class="row">
+      <div class="calc-btn calc-btn-num column" id="calc-seven">7</div>
+      <div class="calc-btn calc-btn-num column" id="calc-eight">8</div>
+      <div class="calc-btn calc-btn-num column" id="calc-nine">9</div>
+      <div class="calc-btn calc-btn-operator column" id="calc-multiply">x</div>
+    </div>
+    <div class="row">
+      <div class="calc-btn calc-btn-num column" id="calc-four">4</div>
+      <div class="calc-btn calc-btn-num column" id="calc-five">5</div>
+      <div class="calc-btn calc-btn-num column" id="calc-six">6</div>
+      <div class="calc-btn calc-btn-operator column" id="calc-minus">-</div>
+    </div>
+    <div class="row">
+      <div class="calc-btn calc-btn-num column" id="calc-one">1</div>
+      <div class="calc-btn calc-btn-num column" id="calc-two">2</div>
+      <div class="calc-btn calc-btn-num column" id="calc-three">3</div>
+      <div class="calc-btn calc-btn-operator column" id="calc-plus">+</div>
+    </div>
+    <div class="row">
+      <div class="calc-btn calc-btn-num column" id="calc-zero">0</div>
+      <div class="calc-btn column" id="calc-decimal">.</div>
+      <div class="calc-btn calc-btn-operator column" id="calc-equals">=</div>
+    </div>
+  </div>
 </body>
 <script>
+    // basic calculator script
   function calc(){
     var a = parseInt(document.querySelector("#value1").value);
     var b = parseInt(document.querySelector("#value2").value);
@@ -47,5 +88,9 @@
     }
     document.querySelector("#results").innerHTML = calculate;
   }
+
+    // html calculator script
+  
+
 </script>
 </html>
