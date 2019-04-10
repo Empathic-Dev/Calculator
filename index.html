@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    html,body{
+      background-color: #1c1c1c;
+      color: #e6e7e8;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator by The Empathic Dev</title>
+</head>
+<body>
+  
+  <form>
+    value 1: <input type="text" id="value1">
+    value 2: <input type="text" id="value2">
+    operator: <select id="operator">
+      <option value="add">add</option>
+      <option value="min">minus</option>
+      <option value="div">divide</option>
+      <option value="mul">multiply</option>
+    </select>
+    <button type="button" onclick="calc()">calculate</button>
+  </form>
+
+  <div id="results"></div>
+
+</body>
+<script>
+  function calc(){
+    var a = parseInt(document.querySelector("#value1").value);
+    var b = parseInt(document.querySelector("#value2").value);
+    var op = document.querySelector("#operator").value;
+    var calculate;
+
+    if (op == "add") {
+      calculate = a + b;
+    } else if (op == "min"){
+      calculate = a - b;
+    } else if (op == "div"){
+      calculate = a / b;
+    } else if (op == "mul"){
+      calculate = a * b;
+    }
+    document.querySelector("#results").innerHTML = calculate;
+  }
+</script>
+</html>
