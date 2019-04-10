@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="aesthetics.css">
+  <title>Calculator by The Empathic Dev</title>
+</head>
+<body>
+  
+  <form>
+    value 1: <input type="text" id="value1">
+    value 2: <input type="text" id="value2">
+    operator: <select id="operator">
+      <option value="add">add</option>
+      <option value="min">minus</option>
+      <option value="div">divide</option>
+      <option value="mul">multiply</option>
+    </select>
+    <button type="button" onclick="calc()">calculate</button>
+  </form>
+
+  <div id="results"></div>
+
+</body>
+<script src="script.js"></script>
+</html>
