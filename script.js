@@ -129,3 +129,25 @@ decimalBtn.onclick = () => {
 }
 
     // calculator v3 build from scratch. no tutorial. just me and google
+var one = document.querySelector("numberOne");
+var two = document.querySelector("numberTwo");
+var Three = document.querySelector("numberThree");
+var four = document.querySelector("numberFour");
+var five = document.querySelector("numberFive");
+var six = document.querySelector("numberSix");
+var seven = document.querySelector("numberSeven");
+var eight = document.querySelector("numberEight");
+var nine = document.querySelector("numberNine");
+var zero = document.querySelector("numberZero");
+
+var calcNumbers = document.getElementsByClassName("calc-numbers");
+
+var add = document.querySelector('calc-operator-divide');
+var add = document.querySelector('calc-operator-multiply');
+var add = document.querySelector('calc-operator-subtract');
+var add = document.querySelector('calc-operator-add');
+var decimal = document.querySelector("decimal");
+
+var equals = document.querySelector('is-equal');
+
+console.log(one.innerHTML)
