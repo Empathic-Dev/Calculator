@@ -68,136 +68,39 @@
       <div class="calc-btn calc-btn-operator column" id="calc-equals">=</div>
     </div>
   </div>
+
+  <div class="calculator"><h1>CSS Grid Calculator</h1></div>
+
+  <div class="calculator-v3">
+    <input type="number" placeholder="0">
+
+    <div class="calc-buttons">
+
+      <button class="calc-button is-clear">C</button>
+      <button class="calc-button">&divide;</button>
+
+      <button class="calc-button">7</button>
+      <button class="calc-button">8</button>
+      <button class="calc-button">9</button>
+      <button class="calc-button">&times;</button>
+
+      <button class="calc-button">4</button>
+      <button class="calc-button">5</button>
+      <button class="calc-button">6</button>
+      <button class="calc-button">&minus;</button>
+
+      <button class="calc-button">1</button>
+      <button class="calc-button">2</button>
+      <button class="calc-button">3</button>
+      <button class="calc-button">&plus;</button>
+
+
+      <button class="calc-button is-zero">0</button>
+      <button class="calc-button is-equal">&equals;</button>
+
+    </div>
+  </div>
+
 </body>
-<script>
-    // basic calculator script
-  function calc(){
-    var a = parseInt(document.querySelector("#value1").value);
-    var b = parseInt(document.querySelector("#value2").value);
-    var op = document.querySelector("#operator").value;
-    var calculate;
-
-    if (op == "add") {
-      calculate = a + b;
-    } else if (op == "min"){
-      calculate = a - b;
-    } else if (op == "div"){
-      calculate = a / b;
-    } else if (op == "mul"){
-      calculate = a * b;
-    }
-    document.querySelector("#results").innerText = calculate;
-  }
-
-    // calculator app style script
-  var oneBtn = document.getElementById("calc-one");
-  var twoBtn = document.getElementById("calc-two");
-  var threeBtn = document.getElementById("calc-three");
-  var fourBtn = document.getElementById("calc-four");
-  var fiveBtn = document.getElementById("calc-five");
-  var sixBtn = document.getElementById("calc-six");
-  var sevenBtn = document.getElementById("calc-seven");
-  var eightBtn = document.getElementById("calc-eight");
-  var nineBtn = document.getElementById("calc-nine");
-  var zeroBtn = document.getElementById("calc-zero");
-
-  var decimalBtn = document.getElementById("calc-decimal");
-  var clearBtn = document.getElementById("calc-clear");
-  var backspaceBtn = document.getElementById("calc-backspace");
-  var displayValElement = document.getElementById("calc-display-val");
-
-  var displayVal = '0';
-  var pendingVal;
-  var evalStringArray = [];
-
-  var calcNumBtns = document.getElementsByClassName("calc-btn-num");
-  var calcOperatorBtns = document.getElementsByClassName("calc-btn-operator");
-
-  var updateDisplayVal = (clickObj) => {
-    var btnText = clickObj.target.innerText;
-    console.log(btnText);
-    if (displayVal === "0")
-      displayVal = "";
-
-      displayVal += btnText;
-      displayValElement.innerText = displayVal;
-
-    console.log("updateDisplayVal Function Test");
-    console.log(displayVal);
-  }
-
-  var performOperation = (clickObj) => {
-    var operator = clickObj.target.innerText;
-
-    switch (operator) {
-      case '+':
-        pendingVal = displayVal;
-        displayVal = "0";
-        displayValElement.innerText = displayVal;
-        evalStringArray.push(pendingVal);
-        evalStringArray.push("+");
-        break;
-      case '-':
-        pendingVal = displayVal;
-        displayVal = "0";
-        displayValElement.innerText = displayVal;
-        evalStringArray.push(pendingVal);
-        evalStringArray.push("-");
-        break;
-      case 'x':
-        pendingVal = displayVal;
-        displayVal = "0";
-        displayValElement.innerText = displayVal;
-        evalStringArray.push(pendingVal);
-        evalStringArray.push("*");
-        break;
-      case '÷':
-        pendingVal = displayVal;
-        displayVal = "0";
-        displayValElement.innerText = displayVal;
-        evalStringArray.push(pendingVal);
-        evalStringArray.push("/");
-        break;
-      case '=':
-        evalStringArray.push(displayVal);
-        var evaluation = eval(evalStringArray.join(" "));
-        displayVal = evaluation + "";
-        displayValElement.innerText = displayVal;
-        evalStringArray = [];
-        break;
-      default:
-        break;
-    }
-  }
-
-  for (let i = 0; i < calcNumBtns.length; i++) {
-    calcNumBtns[i].addEventListener('click', updateDisplayVal, false);
-  }
-  for (let i = 0; i < calcOperatorBtns.length; i++) {
-    calcOperatorBtns[i].addEventListener('click', performOperation, false);
-  }
-
-  clearBtn.onclick = () => {
-    displayVal = "0";
-    pendingVal = undefined;
-    evalStringArray = [];
-    displayValElement.innerHTML = displayVal;
-    console.log("all clear btn works");
-  }
-  backspaceBtn.onclick = () => {
-    let lengthOfDisplayVal = displayVal.length;
-    displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
-
-    if (displayVal === "")
-      displayVal = "0";
-
-    displayValElement.innerText = displayVal;
-    console.log("backspace btn works");
-  }
-  decimalBtn.onclick = () => {
-    if(!displayVal.includes('.'))
-      displayVal += ".";
-    displayValElement.innerText = displayVal;
-  }
-</script>
+<script src="script.js"></script>
 </html>
