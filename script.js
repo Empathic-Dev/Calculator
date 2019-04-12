@@ -160,7 +160,7 @@ for (let i = 0; i < operator.length; i++) {
   });
 }
 var numbers = document.getElementsByClassName("calc-v3-number");
-for (let i = 0; i < operator.length; i++) {
+for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener('click', function(){
     console.log("OwO An Number Btn Was Clicked! " + this.id);
   });
