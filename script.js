@@ -131,20 +131,20 @@ decimalBtn.onclick = () => {
     // calculator v3
 function getHistory(){
   return document.getElementById("history-value").innerText;
-}
+} // this function gets the inner html of the ".history-value" element and returns it
+
 function printHistory(num){
   document.getElementById("history-value").innerText=num;
-}
+} // this function gets the inner html of the ".history-value" element and sets the "num" parameter to the ".history-value"
+
 function getOutput(){
   return document.getElementById("output-value").innerText;
-}
+} // this function gets the inner html of the ".output-value" element and returns it
+
 function printOutput(num){
-  if(num==""){
-    document.getElementById("output-value").innerText=num;
-  } else {
-  document.getElementById("output-value").innerText=getFormattedNumber(num);
-  }
+  document.getElementById("output-value").innerText=num;
 }
+
 function getFormattedNumber(num){
   var n = Number(num);
   var value = n.toLocaleString("en");
@@ -156,12 +156,16 @@ function reverseNumberFormat(num){
 var operator = document.getElementsByClassName("calc-v3-operator");
 for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener('click', function(){
-    console.log("OwO An Operator Btn Was Clicked! " + this.id);
   });
 }
 var numbers = document.getElementsByClassName("calc-v3-number");
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener('click', function(){
-    console.log("OwO An Number Btn Was Clicked! " + this.id);
+    var output=reverseNumberFormat(getOutput());
+    if(output != "NaN"){
+      output=output+this.id;
+      console.log(output);
+      printOutput(output);
+    }
   });
 }
