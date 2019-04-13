@@ -142,17 +142,25 @@ function getOutput(){
 } // this function gets the inner html of the ".output-value" element and returns it
 
 function printOutput(num){
-  document.getElementById("output-value").innerText=num;
+  if (num == ""){
+    document.getElementById("output-value").innerText=num;
+      // if the output value is an empty string, the ".input-value" element stays empty
+  } else {
+    document.getElementById("output-value").innerText=getFormattedNumber(num);
+      // if the output value is a number,
+  }
 }
 
 function getFormattedNumber(num){
   var n = Number(num);
   var value = n.toLocaleString("en");
   return value;
-}
+} // this function gets the number and returns a comma separated value if the number is long
+
 function reverseNumberFormat(num){
   return Number(num.replace(/,/g,''));
-}
+} // this function replaces the comma with an empty character so the calculator can manipulate the number
+
 var operator = document.getElementsByClassName("calc-v3-operator");
 for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener('click', function(){
