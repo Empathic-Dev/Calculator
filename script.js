@@ -162,18 +162,27 @@ function reverseNumberFormat(num){
 } // this function replaces the comma with an empty character so the calculator can manipulate the number
 
 var operator = document.getElementsByClassName("calc-v3-operator");
-for (let i = 0; i < operator.length; i++) {
+  // this variable gets the list of elements with a ".calc-v3-operator"
+
+// this for loop accesses each operator and listens for a click event
+  for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener('click', function(){
-  });
+    console.log("This operator was clicked: "+this.id);
+  }); // when an operator is clicked 
 }
+
 var numbers = document.getElementsByClassName("calc-v3-number");
+  // this variable gets the list of elements with a ".calc-v3-number"
+
+// this for loop accesses each number and listens for a click event
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener('click', function(){
+      // get the output without the commas first
     var output=reverseNumberFormat(getOutput());
-    if(output != "NaN"){
-      output=output+this.id;
-      console.log(output);
+    if(output!=NaN){ // if output is not a number
+      output=output+this.id; // concatenate the id to the output and print it inside the "."
       printOutput(output);
+      console.log("This number was clicked: "+this.id);
     }
   });
 }
