@@ -180,7 +180,7 @@ for (let i = 0; i < numbers.length; i++) {
       // get the output without the commas first
     var output=reverseNumberFormat(getOutput());
     if(output!=NaN){ // if output is not a number
-      output=output+this.id; // concatenate the id to the output and print it inside the "."
+      output=output+this.id; // concatenate the id to the output and print it inside the ".output-value"
       printOutput(output);
       console.log("This number was clicked: "+this.id);
     }
