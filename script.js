@@ -152,6 +152,9 @@ function printOutput(num){
 }
 
 function getFormattedNumber(num){
+  if(num=="-"){
+    return "";
+  }
   var n = Number(num);
   var value = n.toLocaleString("en");
   return value;
@@ -167,8 +170,42 @@ var operator = document.getElementsByClassName("calc-v3-operator");
 // this for loop accesses each operator and listens for a click event
   for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener('click', function(){
-    console.log("This operator was clicked: "+this.id);
-  }); // when an operator is clicked 
+      // check if id is clear then set the input & output to an ("")
+    if(this.id=="clear"){
+      printHistory("");
+      printOutput("");
+    } else if(this.id=="backspace") {
+        // convert number back into a string
+      var output=reverseNumberFormat(getOutput()).toString();
+         // if output has value convert it into a string and remove the last character using subs() then print it back
+      if(output){
+        output=output.substr(0,output.length-1);
+        printOutput(output);
+      }
+    } else {
+      var output=getOutput();
+      var history=getHistory();
+      if(output==""&&history!=""){
+        if(isNaN(history[history.length-1])){
+          history=history.substr(0,history.length-1);
+        }
+      }
+      if(output!="" || history!=""){
+        output= output==""?
+        output:reverseNumberFormat(output);
+        history=history+output;
+        if(this.id=="="){
+          var result=eval(history);
+          printOutput(result);
+          printHistory("");
+        } else {
+          history=history+this.id;
+          printHistory(history);
+          printOutput("");
+        }
+      }
+    }
+  });
 }
 
 var numbers = document.getElementsByClassName("calc-v3-number");
@@ -182,7 +219,6 @@ for (let i = 0; i < numbers.length; i++) {
     if(output!=NaN){ // if output is not a number
       output=output+this.id; // concatenate the id to the output and print it inside the ".output-value"
       printOutput(output);
-      console.log("This number was clicked: "+this.id);
     }
   });
 }

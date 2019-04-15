@@ -139,7 +139,7 @@ form button{
   height: 440px;
   background-color: rgba(0, 0, 0, .6);
 }
-.calc-v3-operator, .calc-v3-number, .calc-v3-empty{
+.calc-v3-operator, .calc-v3-number, .empty{
   font-family: 'IBM Plex Mono', monospace;
   background-color: #e6e7e8;
   color: #1c1c1c;
@@ -171,6 +171,6 @@ form button{
 .calc-v3-operator:active, .calc-v3-number:active{
   font-size: 13px;
 }
-.calc-v3-empty{
+.empty{
   background-color: rgba(0, 0, 0, .0);
 }
